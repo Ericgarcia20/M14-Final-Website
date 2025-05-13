@@ -1,0 +1,141 @@
+---
+name: Eric
+surname: Garcia
+position: "Digital Marketer"
+phone: "+1 (909) 438-8528"
+www: www.linkedin.com/in/eric-a-garcia-220727191/
+email: "ericgarcia@cpp.edu"
+github: ""
+linkedin: eric-a-garcia-220727191
+date: "`r format(Sys.time(), '%B %Y')`"
+output: 
+  vitae::latexcv:
+    theme: classic
+header-includes:
+   - \usepackage{enumitem}
+   - \setlist[itemize]{nosep, left=0pt}
+   - \setlist[enumerate]{nosep, left=0pt}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+if (!requireNamespace(c("tinytex","vitae","tibble"), quietly = TRUE)) {
+  install.packages(c("tinytex","vitae","tibble"))
+}
+
+if (Sys.which("pdflatex") == "" && !tinytex::is_tinytex()) {                    
+  message("► TinyTeX not found – installing")
+  tinytex::install_tinytex()        
+} else {
+  message("✓ LaTeX present – no installation needed.")
+}
+
+library(vitae)
+library(tibble)
+```
+
+# Professional Summary
+
+Motivated and skilled digital marketer and administrator with nearly 2 years of digital marketing experience and over 6 years of professional expertise across small businesses and corporate environments. Passionate about leveraging leadership to drive success in SEO, SEM, and content management while contributing to organizational growth and innovation.
+
+# Technical Skills
+
+-   **Programming & Tools:** R, SQL, RStudio, MS Word/Excel/PowerPoint, Canva, Adobe Photoshop, Acrobat
+
+-   **Marketing & Analytics:** Google Analytics (Certified), HubSpot (Certified), SEMrush, Qualtrics, Social Media
+
+-   **E-commerce Platforms:** Amazon Seller Central, Walmart Seller Center, eBay Seller Center
+
+-   **Other Software:** ADP, Opera Cloud, SAGE
+
+# Education
+
+```{r}
+tribble(
+  ~ Degree, ~ Year, ~ College, ~ Institution,
+  "MS in Digital Marketing", "Expected 2025", "College of Business Administration", "California State Polytechnic University, Pomona",
+  "BA in Sociology (Minor: Criminology)", "2022", "College of Letters, Arts, and Social Sciences", "California State Polytechnic University, Pomona"
+) %>%
+  detailed_entries(Degree, Year, College, Institution)
+```
+
+# Work Experience
+
+```{r}
+tribble(
+  ~ Years, ~ Company, ~ Duties, ~ Title,
+
+  "Aug 2024 – Present", "Durimex Inc. DBA Delta Tech Industries",
+  list(
+    "Designed and maintained user-friendly websites for brand support and customer experience.",
+    "Implemented SEO and SEM strategies, boosting traffic and rankings.",
+    "Managed Amazon, Walmart, and eBay listings to drive sales.",
+    "Executed targeted email campaigns via Constant Contact."
+  ),
+  "Digital Marketing Specialist",
+
+  "May 2024 – Jul 2024", "Parker Dewey",
+  list(
+    "Developed a strategic business plan for CPP Farm Store.",
+    "Conducted competitor analysis to inform strategy.",
+    "Created a 120-slide proposal to enhance conversions.",
+    "Produced content on 2024 trends to guide marketing."
+  ),
+  "Independent Consultant, Internship",
+
+  "Feb 2023 – Sep 2024", "LA MERE, LLC",
+  list(
+    "Managed marketing and admin for Super 8 Hotel in Indio.",
+    "Oversaw social media and financial operations.",
+    "Facilitated hotel sale and 1031 exchange.",
+    "Managed two triple-net properties."
+  ),
+  "Marketing Support / Administration",
+
+  "Aug 2022 – Dec 2022", "Strategic Marketing INC.",
+  list(
+    "Trained new account team members and supported onboarding.",
+    "Provided client communication and workflow coordination."
+  ),
+  "Account Training Manager",
+
+  "Aug 2020 – Aug 2022", "Amazon Sortation Center CN05",
+  list("Assisted in order processing and logistics operations."),
+  "Level 1 Associate",
+
+  "Jun 2018 – May 2020", "New York Pizzeria",
+  list("Delivered orders and provided customer service."),
+  "Employee / Delivery Driver"
+) %>%
+  detailed_entries(
+    what = Title,
+    when = Years,
+    with = Company,
+    why = Duties
+  )
+```
+
+# Projects
+
+```{r}
+tribble(
+  ~ Description,
+  "Recovered $60,000+ for La Mere, LLC from Riverside County DPSS.",
+  "Recovered $30,000+ owed from hotel sale to Ayaan Pithiya, LLC.",
+  "Collected $20,000+ in damages from CDPH for La Mere, LLC.",
+  "Located $40,000 in escrow deposits during hotel sale.",
+  "Resolved $6,000 in invoice discrepancies for La Mere, LLC."
+) %>%
+  brief_entries(Description)
+```
+
+# Certifications & Training
+
+-   **Stukent** – Digital Marketing Simternship (Completed)
+
+-   **HubSpot** – Inbound Marketing & Marketing Software Certifications
+
+-   **SEMrush** – SEO Principles Certification
+
+-   **Google Analytics** – Certified

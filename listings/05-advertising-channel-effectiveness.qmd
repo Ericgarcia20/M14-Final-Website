@@ -1,0 +1,92 @@
+---
+title: "Advertising Channel Effectiveness Analysis"
+image: "https://www.blueatlasmarketing.com/wp-content/uploads/2023/07/Campaign-Effectiveness-Analysis.jpg"
+categories: [Advertising, Data Analysis, Marketing Strategy, Consumer Behavior, Sales]
+index: 5
+---
+
+#### **Overview**
+
+This analysis explores how advertising investments across various channels (such as TV, Google Ads, Social Media, and more) impact product sales. By visualizing spending patterns and running a predictive model, we identify the most influential marketing strategies driving performance.
+
+::::: columns
+::: {.column width="50%"}
+#### **Learning Outcomes**
+
+-   Import, clean, and transform advertising datasets.\
+-   Explore channel-specific sales impact using correlation and regression.\
+-   Visualize multi-channel advertising effectiveness.\
+-   Generate actionable insights for campaign optimization.\
+-   Present findings in a clear, data-driven summary.\
+:::
+
+::: {.column width="50%"}
+#### **Key Skills Gained**
+
+-   Data wrangling with tidyverse\
+-   Correlation and regression analysis\
+-   Data visualization with ggplot2\
+-   Marketing performance modeling\
+-   Strategic advertising recommendations\
+:::
+:::::
+
+### **Data-set Used**
+
+[Click Here for Kaggle Data-set](https://www.kaggle.com/datasets/singhnavjot2062001/product-advertising-data?resource=download)
+
+```{r}
+#| message: false
+#| warning: false
+# Libraries
+library(tidyverse)
+library(ggplot2)
+library(corrplot)
+```
+
+```{r}
+# Data
+data <- read.csv("Advertising_Data.csv")
+```
+
+```{r}
+# Correlation Heatmap
+corr_matrix <- cor(data)
+corrplot(corr_matrix, method = "color", type = "upper", tl.col = "black", tl.srt = 45)
+```
+
+Description: This heatmap visualizes the pairwise correlation between all advertising channels and product sales. A value close to 1 indicates a strong positive correlation, while values close to -1 suggest a strong negative relationship. This plot helps identify which advertising investments are most closely related to higher product sales.
+
+Use Case: Quickly assess which channels might be more effective in influencing product performance.
+
+```{r}
+# Scatter Plots
+data_long <- data %>%
+  pivot_longer(cols = -Product_Sold, names_to = "Channel", values_to = "Spend")
+
+ggplot(data_long, aes(x = Spend, y = Product_Sold)) +
+  geom_point(alpha = 0.6, color = "#0073C2FF") +
+  facet_wrap(~ Channel, scales = "free") +
+  theme_minimal() +
+  labs(title = "Advertising Spend vs. Product Sold", x = "Advertising Spend", y = "Product Sold")
+```
+
+Description: This set of scatter plots displays the relationship between spending in each advertising channel and the number of products sold. Each plot shows how variations in spending may correspond to sales volume for that specific channel.
+
+Use Case: Visually inspect trends, patterns, or outliers for each advertising medium and how it might drive sales.
+
+```{r}
+# Multiple Linear Regression
+model <- lm(Product_Sold ~ ., data = data)
+data$Predicted_Sales <- predict(model, data)
+
+ggplot(data, aes(x = Product_Sold, y = Predicted_Sales)) +
+  geom_point(color = "#EFC000FF", alpha = 0.7) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  labs(title = "Actual vs. Predicted Product Sales", x = "Actual Sales", y = "Predicted Sales")
+```
+
+Description: This plot compares the actual number of products sold to the values predicted by a linear regression model using all advertising channels as predictors. The dashed red line represents a perfect match between predicted and actual sales.
+
+Use Case: Evaluate the overall predictive accuracy of your regression model and assess how well advertising spend explains sales performance.

@@ -1,0 +1,168 @@
+---
+title: "Titanic Survival Prediction with Logistic Regression"
+image: "https://storyworks.scholastic.com/content/dam/classroom-magazines/storyworks/issues/2022-23/120122/debate-would-you-visit-the-titanic/STO-03-120122-P22-DebateTitanic-HR.jpg"
+categories: [Predictive Modeling, Classification, Logistic Regression, Data Science, SMOTE]
+index: 3
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+#### **Overview**
+
+This project developed a logistic regression model to predict Titanic passenger survival based on demographics and travel class. The analysis included preprocessing, handling class imbalance with SMOTE, and evaluating model performance using accuracy, sensitivity, and specificity metrics.
+
+::::: columns
+::: {.column width="50%"}
+#### **Learning Outcomes**
+
+-   Import and clean real-world survival data.  
+-   Engineer features for binary classification.  
+-   Develop a logistic regression model for prediction.  
+-   Handle class imbalance using SMOTE techniques.  
+-   Evaluate classification performance using confusion matrix and metrics.
+:::
+
+::: {.column width="50%"}
+#### **Key Skills Gained**
+
+-   Logistic regression modeling.  
+-   Data wrangling and preprocessing.  
+-   Binary classification evaluation.  
+-   SMOTE for class imbalance.  
+-   R for machine learning pipelines.
+:::
+:::::
+
+#### **Group Work with Colleagues Angel Delgado and Marvin Castrejon.**
+Each Member of our group first loaded up the libraries and imported the Titanic dataset from our own directory where the dataset is housed.
+
+```{r, Load the Data, message=FALSE, warning=FALSE}
+library(rio)
+library(janitor)
+library(tidymodels)
+library(SmartEDA)
+Titanic=import("C:/Users/bigem/OneDrive/Documents/1. MSDM - College/1. IBM 6800 Jae Jung/M14/M14/listings/Titanic.csv") |>
+  clean_names("upper_camel") 
+
+head(Titanic)
+```
+
+In the following code we downloaded the corrplot library and created the DataDeaths dataset where we selected Survive, Passenger class, Sex, and Age.
+We then mutated Survived and created a new column called SurvivedYes which is a 1 if the person survived, and the rest is 0.
+We then used Null to delete the original Survived column.
+We also mutated Male and followed the same format as the survived column.
+Using corrplot we were able to plot the data so we could visualize if the data was positively or negatively impacted by each variable in the dataset.
+
+```{r}
+library(corrplot)
+DataDeaths=Titanic |>
+  select(Survived,Pclass,Sex,Age) |>
+  mutate(SurvivedYes=ifelse(Survived==1,1,0), Survived=NULL) |>
+  mutate(MaleYes=ifelse(Sex=="male",1,0), Sex=NULL) 
+corrplot(cor(DataDeaths))
+```
+
+We mutated the survived variable into a factor.
+
+```{r}
+DataDeaths=DataDeaths |> 
+  mutate(SurvivedYes=as.factor(SurvivedYes))
+```
+
+We set a random seed and then split the dataset into a 30/70 DataTrain and DataTest set.
+Our main focus was on survival as we set our factor into the strata.
+
+```{r}
+set.seed(789)
+Split3070=initial_split(DataDeaths, prop=0.7,strata=SurvivedYes)
+DataTrain=training(Split3070)
+DataTest=testing(Split3070)
+head(DataTrain)
+```
+
+We created a recipe so that we could ultimately create a workflow.
+As can be seen, SurvivedYes is the dependent variable in our Recipe.
+
+```{r}
+RecipeDeaths=recipe(SurvivedYes~Pclass+MaleYes+Age, data=DataTrain)
+```
+
+We created a ModelDesign for our logistic regression and we set our engine and mode below.
+
+```{r}
+ModelDesignLogistic=logistic_reg() |>
+  set_engine("glm") |> 
+  set_mode("classification")
+```
+
+We pieced together our WF and fit the DataTrain to our WFModel to see what outcome we would achieve.
+
+```{r}
+WFModelDeaths=workflow() |>
+  add_recipe(RecipeDeaths) |>
+  add_model(ModelDesignLogistic) |>
+  fit(DataTrain)
+
+tidy(WFModelDeaths)
+```
+
+Our p-values for Pclass, MaleYes, and Age all prove to be significant with values \<0.05.
+
+We now include the predictions in the data frame.
+pred_class shows if the passenger survived with 1.
+pred_0 shows the passengers percentage of belonging to the death rate.
+pred_1 shows the passengers survival rate.
+
+```{r}
+DataTestWithPred=augment(WFModelDeaths, new_data = DataTest)
+head(DataTestWithPred)
+```
+
+```{r}
+conf_mat(DataTestWithPred, truth=SurvivedYes, estimate= .pred_class)
+```
+
+True Positive (TP): 142 True Negative (TN): 74 False Positive (FP): 29 False Negative (FN): 22
+
+```{r}
+DDeaths=metric_set(accuracy, sensitivity, specificity)
+DDeaths(DataTestWithPred, truth=SurvivedYes, estimate= .pred_class)
+```
+
+Acurracy: The model predicts the survival status correctly about 81% of the time.
+Sensitivity: The model correctly identifies about 87% of the actual survivors.
+Specificity: The model correctly identifies about 72% of the passengers who did not survive.
+
+```{r}
+count(DataTrain, SurvivedYes)
+```
+
+Count shows how many passengers survived 1 = 239, and how many passengers did not survive 0 = 381.
+
+In this recipe we include step_smote() and then we rerun the workflow with DataTrain to see how our results have changed.
+
+```{r}
+library(themis)
+RecipeDeaths=recipe(SurvivedYes~Pclass+MaleYes+Age, data=DataTrain) |>
+  step_smote(SurvivedYes, over_ratio=0.8)
+```
+
+```{r}
+WFModelDeaths=workflow() |>
+  add_recipe(RecipeDeaths) |>
+  add_model(ModelDesignLogistic) |>
+  fit(DataTrain)
+
+DataTestWithPred=augment(WFModelDeaths, new_data = DataTest)
+
+conf_mat(DataTestWithPred, truth=SurvivedYes, estimate= .pred_class)
+
+DDeaths=metric_set(accuracy, sensitivity, specificity)
+DDeaths(DataTestWithPred, truth=SurvivedYes, estimate= .pred_class)
+```
+
+As can be seen from the confusion matrix and the metrics of the sample, our outcome has changed.
+True Positive (TP): 134 True Negative (TN): 76 False Positive (FP): 27 False Negative (FN): 30 Accuracy: The model predicts the survival status correctly about 79% of the time.
+Sensitivity: The model correctly identifies about 82% of the actual survivors.
+Specificity: The model correctly identifies about 74% of the passengers who did not survive.

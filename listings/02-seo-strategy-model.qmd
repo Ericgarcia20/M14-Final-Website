@@ -1,0 +1,117 @@
+---
+title: "Sleep Health SEO Strategy Model"
+image: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3hn73nplm0nv0ct18vg0.jpg"
+categories: [SEO, Data Analysis, Sleep Health, Regression Modeling, Digital Strategy]
+index: 2
+---
+
+#### **Overview**
+
+In this project, we analyzed the *Sleep Health and Lifestyle* dataset to model sleep quality and inform SEO content strategies related to wellness topics. Using regression and DAG models, we examined how stress, exercise, heart rate, and BMI relate to sleep quality. The findings guided content creation for keyword-rich, data-backed wellness pages.
+
+::::: columns
+::: {.column width="50%"}
+#### **Learning Outcomes**
+
+-   Transform and engineer categorical health data for modeling.\
+-   Use DAGs to define causal assumptions in wellness data.\
+-   Perform EDA and correlation analysis for SEO-driven topics.\
+-   Build regression models to explain sleep quality outcomes.\
+-   Connect data-driven health insights to content strategy.
+:::
+
+::: {.column width="50%"}
+#### **Key Skills Gained**
+
+-   DAG modeling with `ggdag`\
+-   SEO content mapping from data insights\
+-   Exploratory data analysis (EDA)\
+-   Logistic and linear regression in R\
+-   Data storytelling with health metrics
+:::
+:::::
+
+#### **Group Project with Kiki Shimomae.**
+
+```{r data import, message=FALSE, warning=FALSE}
+library(tidymodels)
+library(tidyverse)
+library(googlesheets4)
+library(rio)
+library(janitor)
+
+SleepHealth <- import("C:/Users/bigem/OneDrive/Documents/1. MSDM - College/1. IBM 6800 Jae Jung/M14/M14/listings/Sleep_health_and_lifestyle_dataset.csv") |>
+  clean_names("upper_camel")  # This will make your column names neat and camel-case
+
+head(SleepHealth)
+```
+
+```{r DAG}
+library(ggdag) 
+dagify(SleepQuality~Stress+Exercise+HeartRate+BMI,
+       BMI~Exercise) |> 
+ggdag(node_size = 22) + theme_dag_gray_grid()
+
+```
+
+```{r clean data}
+library(wooldridge)
+
+# 1. change all the variable to numeric
+
+SexType <- c(Male = 0, Female = 1)
+SleepHealth$Sex <- SexType[SleepHealth$Gender] 
+# Changing Gender (chr variable) to numeric variable. Male = 0, female = 1 
+colnames(SleepHealth)
+SleepHealth = SleepHealth |>
+    mutate(`BmiCategory` = ifelse(`BmiCategory` == "Normal Weight", "Normal", `BmiCategory`))
+# combining both Normal & Normal Weight into one category of "Normal" 
+
+BMIType <-c(Normal = 0, Overweight = 1, Obese = 2)
+SleepHealth$BMI <- BMIType[SleepHealth$`BmiCategory`]
+# Changing BMI Category (chr variable) to numeric variable. 
+# Normal = 0, Overweight = 1, Obese = 2) 
+
+
+# changing variable name to make it easy & short
+
+SleepHealthData <- SleepHealth |>
+  select(
+    SleepQuality = QualityOfSleep,
+    Stress = StressLevel,
+    Exercise = PhysicalActivityLevel,
+    HeartRate,
+    Age,
+    SleepDuration,
+    DailySteps,
+    Sex,
+    BMI = BmiCategory
+  ) |>
+  clean_names("upper_camel")
+
+```
+
+```{r EDA}
+library(SmartEDA)
+ExpReport(SleepHealthData, op_file = "EDAReport.html")
+ 
+```
+
+```{r Correlation Analysis}
+library(corrplot)
+
+# Filter numeric columns only
+numeric_vars <- SleepHealthData |>
+  dplyr::select(where(is.numeric))
+
+CorMatrix <- cor(numeric_vars, use = "complete.obs")
+corrplot(CorMatrix)
+
+```
+
+```{r clean data for regression}
+
+SleepData <- SleepHealthData |>
+  select(SleepQuality, Stress, Exercise, HeartRate, Bmi)
+
+```

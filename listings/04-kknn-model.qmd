@@ -1,0 +1,133 @@
+---
+title: "Tuning a kNearest Neighbor Model"
+image: "https://i.ytimg.com/vi/HVXime0nQeI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB7-7_28nakEHE55CNPFuA_vBmCMw"
+categories: [Machine Learning, Classification, Model Tuning, Data Science, R Programming]
+index: 4
+---
+
+#### **Overview**  
+This project used a k-Nearest Neighbor (KNN) classification algorithm to predict wine color (Red or White) based on chemical attributes. A structured workflow was created to preprocess the data, tune hyperparameters, validate model performance, and identify the most accurate model configuration.
+
+::: {.columns}
+::: {.column width="50%"}
+#### **Learning Outcomes**  
+- Prepare and normalize data using preprocessing recipes.  
+- Implement classification models using the `tidymodels` framework.  
+- Apply cross-validation and hyperparameter tuning for model selection.  
+- Evaluate accuracy, specificity, and sensitivity of model predictions.  
+- Build a reproducible ML pipeline in R.
+:::
+::: {.column width="50%"}
+#### **Key Skills Gained**  
+- Data preprocessing with `recipes` and `janitor`.  
+- Model training and tuning with `tidymodels` and `kknn`.  
+- Cross-validation with stratified folds.  
+- Classification performance evaluation.  
+- Automated ML workflows in R.
+:::
+:::
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Libraries and Loading Data
+
+```{r message=FALSE, warning=FALSE}
+library(tidymodels)
+library(rio)
+library(janitor)
+library(kknn)
+DataWine=import("https://ai.lange-analytics.com/data/WineData.rds") |> 
+         clean_names("upper_camel") |> 
+         rename(Sulfur=TotalSulfurDioxide) |> 
+         mutate(WineColor=as.factor(WineColor)) 
+```
+
+# Step 1: Split Data in Training and Testing Data
+We split the data into training and testing data. DataTest has 30% of the data in the Wine dataset, and DataTrain has 70% of the data in the wine dataset.
+```{r}
+set.seed(876)
+Split7030=initial_split(DataWine, prop=0.7, strata=WineColor)
+DataTrain=training(Split7030)
+DataTest=testing(Split7030)
+
+head(DataTrain)
+```
+# Step 2 - Create a Recipe:
+We created the recipe by following the steps from the book and use step_rm to remove the variable "Quality" since it is not related to Wine color.
+```{r}
+Recipe=recipe(WineColor~., data=DataTrain) |>
+       step_rm(Quality) |>
+       step_normalize(all_predictors())
+
+print(Recipe)
+```
+# Step 3 - Create a Model Design:
+We use the tuning function and assign it as a placeholder so that we may assign specific numerical values later on.
+```{r}
+ModelDesign=nearest_neighbor(neighbors=tune()) |>
+               set_engine("kknn") |> 
+               set_mode("classification")
+print(ModelDesign)
+```
+
+# Step 4 - Add the Recipe and the Model Design to a Workflow:
+We add the recipe and model design and execute the workflow.
+```{r}
+TuneWFModel=workflow() |>
+            add_recipe(Recipe) |>
+            add_model(ModelDesign)
+print(TuneWFModel)
+```
+
+# Step 5 - Create a Hyper-Parameter Grid:
+We add 1:15 to the hyper-parameter grid so that these numbers can be tried out by the time we are at step 7.
+```{r}
+ParGrid=data.frame(neighbors=c(1:15))
+print(ParGrid)
+```
+
+# Step 6 - Creating Resamples for Cross-Validation:
+We substitue the number 5 so that we can create the five folds for samples later on.
+```{r}
+set.seed(123)
+FoldsForTuning=vfold_cv(DataTrain, v=5,
+                        strata=WineColor)
+print(FoldsForTuning)
+```
+
+# Step 7 - Tune the Workflow and Train All Models:
+We incorporate three metrics into the data and are able to see the three charts that are displayed. A k of 1-4 has the best accuracy and should be used to yield the best results
+```{r}
+TuneResults=tune_grid(TuneWFModel, 
+                      resamples=FoldsForTuning, 
+                      grid=ParGrid, 
+                      metrics=metric_set(accuracy, specificity, sensitivity))
+autoplot(TuneResults)
+```
+
+# Step 8 - Extract the Best Hyper-Parameter(s):
+All assessment results for the specified metrics. We substitute accuracy into the dataset. People who have the updated version need to use "metric =" for this coding section.
+```{r}
+BestHyperPar <- select_best(TuneResults, metric = "accuracy")
+print(BestHyperPar)
+```
+
+# Step 9 - Finalize and Train the Best Workflow Model:
+Execute the final workflow to set the hyper-parameter to neighbors=1.
+```{r}
+WFModelBest=TuneWFModel |>
+            finalize_workflow(BestHyperPar) |>
+            fit(DataTrain)
+
+print(WFModelBest)
+```
+
+# Step 10: Assess Prediction Quality Based on the Testing Data:
+Out of 480 White Wines only 7 of them were incorrectly classified.
+```{r}
+DataTestWithPredBestModel=augment(WFModelBest, DataTest)
+conf_mat(DataTestWithPredBestModel, truth=WineColor,
+         estimate=.pred_class)
+```
