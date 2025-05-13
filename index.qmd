@@ -1,0 +1,25 @@
+---
+title: "Hi, I'm Eric Garcia"
+---
+
+::::: columns
+::: {.column width="30%"}
+![](images/work%20pic-1.png){style="border-radius: 50%;"}
+:::
+
+::: {.column width="70%" style="padding-left: 3rem;"}
+I'm a Digital Marketing Specialist and Analyst with a passion for turning data-driven insights into strategic actions that drive growth. With a strong foundation in SEO, SEM, content strategy, and performance analytics, I help businesses enhance their online presence, optimize marketing efforts, and connect with their target audiences more effectively. My approach combines analytical precision with creative problem-solving to deliver measurable results in fast-paced digital environments.
+:::
+:::::
+
+## About Me
+
+I hold a **Master of Science in Digital Marketing** Degree from California State Polytechnic University, Pomona. Some hobbies of mine include golf, taking my dog to the dog park, exercising, and video games. I am joining the Amazon workforce soon, so stay tuned...
+
+## Let's Connect
+
+You can [email me](mailto:bigeman2u@gmail.com) or connect on [LinkedIn](https://www.linkedin.com/in/eric-a-garcia-220727191/).
+
+------------------------------------------------------------------------
+
+*Welcome to my portfolio.*

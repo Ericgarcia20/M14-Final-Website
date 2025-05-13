@@ -1,0 +1,75 @@
+---
+title: "Strategic Marketing Projects"
+---
+
+Below are selected projects that showcase my work in strategic marketing, campaign development, and brand management. These examples highlight how I apply leadership, data-informed decision making, and creative direction to drive marketing success.
+
+## **Leveraging Artificial Intelligence (AI) Through Active Listening Training**
+
+In this project, I led the development of a comprehensive AI-driven training tool to improve salesperson listening skills using GPT-based chatbots. My role centered around designing and deploying two distinct GPT chatbot models (one that accepts free-text responses and another that uses multiple-choice interactions) to simulate real-life B2B sales scenarios and evaluate salesperson behavior. I integrated prompt engineering techniques to measure key communication tactics and constructed over 1,000 survey-style prompts to gather measurable insights on listener effectiveness.
+
+As part of the analytical objective, I applied a custom GPT formula across six targeted questions, 50 buyer personas, and four experimental conditions, resulting in 200 unique persona-condition combinations and generating a dataset of over 1,000 structured response points. These simulated conversations were then analyzed to identify which listening tactics (Delay = timing of response) and (Value Affirmation = emphasizing relevance of features) influenced the Purchase Decision (dependent variable).
+
+The six questions, structured as Likert-scale and binary prompts (e.g., "Did the salesperson have a delay in their interaction?"), helped evaluate behaviors like timing, affirmation, and persistence during negotiations. Survey ratings were derived strictly using the customer's persona, final response, and rationale, providing standardized data for comparison across conditions.
+
+This work is part of a broader research initiative aimed at bridging the gap between subjective listening skills and objective performance in sales calls. Through careful documentation, iterative prompt refinement, and collaboration with a partner, we designed a scalable, cost-effective solution to train and evaluate salespeople using generative AI tools.
+
+**Skills Demonstrated:**
+
+-   **AI Integration & Prompt Engineering:** Designed structured and variable prompts across complex conversational conditions to model sales interactions and behaviors.
+-   **Data Analysis & Experimental Design:** Implemented controlled variables (Delay, Value Affirmation) and collected over 1,000 data points across 200 chatbot simulations.
+-   **Marketing & Training Strategy:** Created a training tool rooted in real-world sales psychology to improve sales performance using LLM-based feedback.
+-   **Collaborative Development:** Worked closely with a teammate to co-develop chatbot logic, refine output, and maintain detailed project documentation.
+-   **UX & Conversational Design:** Crafted free-form and multiple-choice interfaces to simulate sales conversations and deliver user-friendly training flows.
+
+------------------------------------------------------------------------
+
+## Protein Popcorn Chatbot - Group Client Research
+
+In this project, I led the development of a comprehensive marketing research and strategy initiative for Up Energy's Protein Popcorn chatbot recommendation tool. Focused on improving customer acquisition and product awareness, I spearheaded a cross-functional campaign that involved in-depth consumer research, segmentation analysis, and strategic recommendations. From identifying decision-making challenges to exploring digital marketing avenues, my team and I managed the entire lifecycle of the project, aligning our strategy with client business goals and KPIs related to consumer engagement, conversion rates, and brand positioning.
+
+Our work included assessing consumer familiarity with protein popcorn, evaluating perceptions around its health benefits, and understanding how messaging, flavors, packaging, and pricing influenced buyer behavior. We also studied how demographic factors and fitness levels shaped preferences, and made targeted recommendations to help the brand reach beyond typical gym-goers to appeal to broader audiences like parents, busy professionals, and individuals with dietary restrictions.
+
+Ultimately, the chatbot was envisioned as an intelligent, data-driven tool to support personalized product recommendations based on consumer profiles, thereby improving the user experience and helping the brand stand out in a competitive healthy snack market.
+
+**Skills Demonstrated:**
+
+-   **Marketing Strategy:** Defined business objectives around consumer engagement and product adoption. Created data-driven strategies to meet those goals, including targeted outreach and segmentation.
+-   **Market Research:** Conducted qualitative and quantitative research, including consumer interviews and sentiment analysis, to evaluate brand awareness, packaging preferences, pricing sensitivity, and dietary needs.
+-   **Consumer Insights:** Identified behavioral patterns and purchase drivers across demographics, fitness levels, and income groups to craft more inclusive marketing strategies.
+-   **Messaging and Positioning:** Developed storytelling frameworks emphasizing transparency, science-backed health claims, and real-world usability to enhance brand trust and relatability.
+-   **Digital Marketing Tactics:** Recommended high-impact digital channels such as Instagram, influencer partnerships, and sampling events to boost brand visibility and product trials.
+-   **Cross-functional Collaboration:** Worked with a diverse team to synthesize insights, brainstorm innovative solutions, and deliver a cohesive, actionable strategy to the client.
+
+------------------------------------------------------------------------
+
+## Farm Store Retail Strategy
+
+In this project, I led the development of retail experience enhancements for the Cal Poly Pomona Farm Store, with a focus on HR optimization, customer service design, and store presentation. I contributed to the merchandising strategy through the creation of a themed gift box concept tailored to the store's seasonal retail events, emphasizing local branding and customer engagement. My responsibilities included redesigning the store's visual merchandising approach to address layout constraints and improve traffic flow, as well as introducing service strategies to better align with customer expectations and staffing limitations.
+
+Additionally, I developed practical solutions to enhance store management, incorporating workforce planning that considers student staffing cycles and seasonal demand. By aligning store presentation with the Farm Store's value proposition (offering fresh, locally grown products in a student-driven retail environment) I supported both the educational mission and commercial success of the store.
+
+**Skills Demonstrated:**
+
+-   **Retail Strategy & Merchandising:** Created a thematic gift box concept aligned with seasonal promotions, improving impulse purchases and gift revenue streams.
+-   **Visual Merchandising:** Designed store layout and presentation strategies to optimize limited physical space and improve the in-store customer journey.
+-   **Human Resource Management:** Proposed staffing solutions suited for a student-operated store, addressing turnover, seasonality, and scheduling challenges.
+-   **Customer Experience Design:** Enhanced service models to reduce crowding frustrations, incorporating clearer signage, better queue management, and convenience-focused adjustments.
+-   **Brand Development:** Integrated farm-to-table identity and Cal Poly branding into packaging and presentation to differentiate the Farm Store from commercial competitors.
+
+------------------------------------------------------------------------
+
+## Online Coffee Retailer on Shopify
+
+In this project, I led the development of a complete business plan for iluvcafecito, an e-commerce coffee brand under TJE Holdings, LLC. I was responsible for shaping the concept, building the brand identity, and creating a comprehensive strategy covering operations, marketing, product offerings, and financial forecasting. From identifying the target market to crafting the brand's mission and visual style, I directed all aspects of the business launch plan with an emphasis on sustainability, ethical sourcing, and customer-centric innovation.
+
+The plan included a multi-phase rollout starting with online sales of premium coffee products (beans, grounds, accessories, and subscriptions) followed by pop-up presence at local farmers markets, and ultimately the establishment of a physical retail location. I designed the customer experience strategy around convenience and customization through tailored subscription models, while building in retention tactics like loyalty programs and seasonal product drops.
+
+**Skills Demonstrated:**
+
+-   **Business Strategy & Planning:** Developed a scalable business model with phased growth from e-commerce to brick-and-mortar, with defined milestones and financial projections.
+-   **Brand Development:** Created a unique brand identity that emphasizes ethical sourcing, sustainability, and premium quality, with cohesive branding across packaging, digital presence, and marketing.
+-   **Marketing Strategy:** Outlined a full-funnel marketing approach including SEO, content marketing, social media campaigns, influencer partnerships, and paid advertising to drive traffic and conversion.
+-   **E-Commerce Development:** Designed the e-commerce platform architecture (Shopify), including payment integration, product organization, and subscription customization.
+-   **Operations Management:** Established supplier relationships (e.g., Temecula Coffee Roasters), fulfillment plans, customer service protocols, and technology stack including CRM and email automation tools.
+-   **Financial Forecasting:** Built realistic financial models projecting revenue growth, break-even timelines, and funding requirements, with a focus on recurring subscription income and high-margin upsells.

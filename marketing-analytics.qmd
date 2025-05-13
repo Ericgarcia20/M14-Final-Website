@@ -1,0 +1,30 @@
+---
+title: "Marketing Analytics"
+listing: 
+  contents: listings
+  type: grid
+  categories: true
+  sort: 
+    - "index desc"
+---
+
+Below are selected projects that highlight my experience applying marketing analytics to real-world challenges. These projects reflect my ability to combine statistical tools, campaign data, and strategic thinking to inform decisions and drive results.
+
+Whether developing dashboards, analyzing campaign performance, or uncovering insights through SEO and web analytics, each project is rooted in turning complex marketing data into clear, actionable strategies.
+
+## What You’ll Find
+
+-   **Campaign Performance Analysis**\
+
+    Dive into a thorough evaluation of digital marketing campaigns, assessing ROI, conversion rates, and engagement across platforms like Google Ads, Facebook, and organic search. This involves time-series analysis, cohort tracking, and A/B test comparisons to isolate the most effective strategies and ensure data-driven budget allocation.
+-   **Data Visualization and Reporting**\
+
+    Raw data is transformed into meaningful, interactive dashboards and reports using tools such as Tableau, Power BI, or Python libraries like Plotly and Seaborn. These visualizations not only present trends clearly but also enable stakeholders to make fast, informed decisions based on real-time insights and historical performance.
+-   **Advanced Marketing Mix Modeling & Channel Attribution**\
+
+    Explore the nuanced contributions of each marketing channel through multi-touch attribution models, regression-based marketing mix models (MMM), and cross-channel synergy analysis. This includes scenario simulations to predict outcomes based on shifts in media spending or campaign structure.
+-   **Customer & Market Behavior Insights**\
+
+    Utilize segmentation, clustering, and predictive modeling to understand customer lifecycles, preferences, and churn risk. Leverage demographic and behavioral data to tailor campaigns, improve user journeys, and uncover emerging market trends. This work guides personalization strategies and supports long-term growth planning.
+
+------------------------------------------------------------------------

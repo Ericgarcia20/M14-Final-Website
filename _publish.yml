@@ -1,0 +1,7 @@
+- source: project
+  quarto-pub:
+    - id: 6ccafe91-fab4-4c99-9d5e-73bbd24a0465
+      url: https://ericgarcia20.quarto.pub/eric-garcia-portfolio
+  netlify:
+    - id: 8cd44e74-0714-4349-960f-5859c04c6348
+      url: https://effortless-pegasus-a99617.netlify.app

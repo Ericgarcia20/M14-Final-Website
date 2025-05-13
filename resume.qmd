@@ -1,0 +1,83 @@
+---
+title: "Resume"
+format: html
+---
+
+## Résumé
+
+You can download or view a PDF version of my résumé [here](resume/Resume.pdf).
+
+<iframe src="resume/Resume.pdf" width="100%" height="650px" style="border: none;">
+  This browser does not support PDFs. Please download the PDF to view it: 
+  <a href="resume/Resume.pdf">Download Résumé</a>
+</iframe>
+
+# Professional Summary
+
+Motivated and skilled digital marketer and administrator with nearly 2 years of digital marketing expertise and over 6 years of professional experience across small businesses and corporate environments. Passionate about leveraging leadership skills to drive success in administration, SEO, SEM, and content management while contributing to organizational growth and innovation.
+
+# Technical Skills
+
+| **RStudio** | MS Word | MS Excel | MS PowerPoint | Social Media Marketing |
+|---------------|---------------|---------------|---------------|---------------|
+| **Adobe Photoshop** | **Adobe Acrobat** | **Qualtrics** | **ADP** | **Opera Cloud** |
+| **SAGE** | **Amazon Seller Central** | **Walmart Seller Center** | **eBay Seller Center** | **Canva** |
+
+# Education
+
+| Degree | Year | College / Department | Institution |
+|------------------|------------------|------------------|------------------|
+| Master of Science in Digital Marketing | Fall 2023 - Summer 2025 | Singlelyn Graduate School of Business | California State Polytechnic University, Pomona |
+| Bachelor of Arts in Sociology/Criminology | Fall 2018 - Spring 2022 | College of Letters, Arts, and Social Sciences | California State Polytechnic University, Pomona |
+
+# Relevant Work Experience
+
+#### Durimex Inc. DBA Delta Tech Industries \| Digital Marketing Specialist
+
+**Aug 2024 - Present**
+
+-   Designed and maintained engaging, user-friendly websites to support brand presence and customer experience.
+
+-   Implemented strategic SEO and SEM practices, improving search engine rankings and increasing organic and paid traffic.
+
+-   Managed e-commerce platforms for Amazon, Walmart, and eBay, optimizing product listings to drive sales and enhance visibility.
+
+-   Executed targeted email marketing campaigns via Constant Contact, achieving measurable engagement and conversion rates.
+
+#### Parker Dewey \| Independent Consultant, Internship
+
+**May 2024 - 2 mos.**
+
+-   Delivered a comprehensive business plan for California State Polytechnic University, Pomona, Farm Store, focusing on strategies to enhance customer acquisition and online presence.
+
+-   Conducted in-depth competitor analysis, gathering insights from local and large-scale market leaders to inform strategic recommendations.
+
+-   Designed a 120-slide PowerPoint presentation highlighting actionable steps to improve conversion rates across the store's product offerings.
+
+-   Created industry-relevant content to equip the employer with valuable insights into 2024 market trends, enabling improved product and service marketing strategies.
+
+#### LA MERE, LLC \| Marketing Support / Administration
+
+**Feb 2023 - Sep 2024**
+
+-   Directed marketing and administrative functions for Indio Super 8 & Suites by Wyndham, including overseeing social media platforms (Facebook, LinkedIn, and Twitter).
+
+-   Managed financial operations, including reporting, budgeting, accounts payable, and payroll, ensuring compliance and efficiency.
+
+-   Supported the successful sale of a hotel property and facilitated a 1031 exchange, reinvesting in a new property.
+
+-   Provided administration and property management for two triple-net properties.
+
+-   Contributed to diverse projects focused on enhancing operational performance and strategic investments, available to discuss in detail.
+
+#### Strategic Marketing INC. \| Account Training Manager
+
+**Aug 2022 - Dec 2022**
+
+#### Amazon Sortation Center CN05 \| Level 1 Associate
+
+**Aug 2020 - Aug 2022**
+
+#### New York Pizzeria \| Employee / Delivery Driver
+
+**Jun 2018 - May 2020**
